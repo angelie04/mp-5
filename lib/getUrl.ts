@@ -1,7 +1,7 @@
 import { ShortUrl } from "@/types";
-import getCollection from "@/db";
+import getCollection, {COLLECTION_NAME} from "@/db";
 
-const COLLECTION_NAME = "urls";
+// const COLLECTION_NAME = "urls";
 
 export default async function getUrlByAlias(
     alias: string
