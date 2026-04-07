@@ -1,14 +1,18 @@
 import getUrlByAlias from "@/lib/getUrl";
 import { redirect } from "next/navigation";
 
-interface PageProps {
-    params: {
-        alias: string;
-    };
-}
+// interface PageProps {
+//     // params: {
+//     //     alias: string;
+//     // };
+//
+// }
+type PageProps = {
+    params: Promise<{ alias: string }>;
+};
 
 export default async function AliasPage({ params }: PageProps) {
-    const { alias } = params;
+    const { alias } = await params;
     const data = await getUrlByAlias(alias);
 
     if (!data) {
