@@ -1,5 +1,5 @@
 "use client";
-import createShortUrl from "@/lib/createUrl";
+import createUrl from "@/lib/createUrl";
 import { ShortUrl } from "@/types";
 import {Button, FormHelperText, TextField} from "@mui/material";
 import { useState } from "react";
@@ -16,13 +16,13 @@ export default function NewShortUrlForm({
 
     return (
         <form
-            className="w-200 h-100 rounded-2xl p-6 shadow-lg"
+            className="w-200 h-120 rounded-2xl p-6 shadow-lg"
             style={{ backgroundColor: "#f1b6d9" }}
             onSubmit={(e) => {
                 e.preventDefault();
                 setError("");
 
-                createShortUrl(alias, url)
+                createUrl(url, alias)
                     .then((p) => {
                         if (!p) return;
 
@@ -89,7 +89,7 @@ export default function NewShortUrlForm({
             {/* Result Link */}
             {shortLink && (
                 <div className="mt-4 text-center">
-                    <p className="text-pink-700 text-sm mb-1">Your link:</p>
+                    <p className="text-pink-700 text-sm mb-1 font-bold">Your link:</p>
                     <div className="flex items-center justify-center gap-2">
                         <input
                             className="border rounded px-2 py-1 text-sm w-64"
@@ -100,13 +100,15 @@ export default function NewShortUrlForm({
                             size="small"
                              // added feature to be able to  copy link to your clipboard
                             onClick={() => navigator.clipboard.writeText(shortLink)}
-                            sx={{ color: "#ec4899" }}
+                            sx={{ color: "#ec4899", fontWeight: 'bold'}}
                         >
                             Copy
                         </Button>
                     </div>
                 </div>
+
             )}
         </form>
+
     );
 }

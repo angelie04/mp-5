@@ -9,7 +9,6 @@ interface PageProps {
 
 export default async function AliasPage({ params }: PageProps) {
     const { alias } = params;
-
     const data = await getUrlByAlias(alias);
 
     if (!data) {

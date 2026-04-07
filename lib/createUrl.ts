@@ -31,8 +31,15 @@ export default async function createUrl(
     if(!res.acknowledged){
         return null;
     }
+        console.log("URL RECEIVED:", newUrl.url);
+        console.log ("alias:", newUrl.alias);
     return {
-        ...newUrl,
+        // ...newUrl,
+        // id: res.insertedId.toHexString(),
+        alias: newUrl.alias,
+        url: newUrl.url,
         id: res.insertedId.toHexString(),
+
     };
+
 }
