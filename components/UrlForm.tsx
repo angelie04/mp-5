@@ -22,7 +22,7 @@ export default function NewShortUrlForm({
                 e.preventDefault();
                 setError("");
 
-                createUrl(url, alias)
+                createUrl(alias, url)
                     .then((p) => {
                         if (!p) return;
 
