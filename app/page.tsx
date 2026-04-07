@@ -16,6 +16,7 @@ export default function Home() {
         </p>
 
         <NewShortUrlForm />
+      {/*    <Link> {newUrl.url} </Link> */}
 
       </div>
   );

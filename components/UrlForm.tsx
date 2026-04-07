@@ -26,7 +26,7 @@ export default function NewShortUrlForm({
                     .then((p) => {
                         if (!p) return;
 
-                        const generatedLink = `${window.location.origin}/${p.alias}`;
+                        const generatedLink = `https://mp-5-pi-five.vercel.app/${p.alias}`;
                         setShortLink(generatedLink);
 
                         if (onCreate) onCreate(p);
