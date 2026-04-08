@@ -27,7 +27,7 @@ export default function NewShortUrlForm({
                         if (!p) return;
                         // new...
                         if (typeof p === "string") {
-                            setError(p);   // 👈 handle error message
+                            setError(p);
                             return;
                         }
                         const generatedLink = `https://mp-5-pi-five.vercel.app/${p.alias}`;
