@@ -2,8 +2,6 @@
 import { ShortUrl } from "@/types";
 import getCollection, {COLLECTION_NAME} from "@/db";
 
-
-
 export default async function createUrl(
     alias: string,
     url: string,
@@ -26,6 +24,10 @@ export default async function createUrl(
     if (duplicate) {
         // throw new Error ("Alias already taken")
         return "Alias already taken";
+    }
+
+    if (newUrl.url = "https://mp-5-pi-five.vercel.app/" ) {
+        return "Used this sites url, try something else!"
     }
 
     // similar to lab syntax
