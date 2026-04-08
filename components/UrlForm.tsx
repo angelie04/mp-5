@@ -25,7 +25,11 @@ export default function NewShortUrlForm({
                 createUrl(alias, url)
                     .then((p) => {
                         if (!p) return;
-
+                        // new...
+                        if (typeof p === "string") {
+                            setError(p);   // 👈 handle error message
+                            return;
+                        }
                         const generatedLink = `https://mp-5-pi-five.vercel.app/${p.alias}`;
                         setShortLink(generatedLink);
 
@@ -35,9 +39,9 @@ export default function NewShortUrlForm({
                         setAlias("");
                         setUrl("");
                     })
-                    .catch((err) => {
-                        setError(err.message);
-                    });
+                    // .catch((err) => {
+                    //     setError(err.message);
+                    // });
             }}
         >
             {/* Title */}

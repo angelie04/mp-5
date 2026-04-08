@@ -1,12 +1,7 @@
 import getUrlByAlias from "@/lib/getUrl";
 import { redirect } from "next/navigation";
 
-// interface PageProps {
-//     // params: {
-//     //     alias: string;
-//     // };
-//
-// }
+
 type PageProps = {
     params: Promise<{ alias: string }>;
 };

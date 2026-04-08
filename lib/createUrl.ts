@@ -2,12 +2,12 @@
 import { ShortUrl } from "@/types";
 import getCollection, {COLLECTION_NAME} from "@/db";
 
-// const COLLECTION_NAME = "urls";
+
 
 export default async function createUrl(
     alias: string,
     url: string,
-): Promise<ShortUrl | null> {
+): Promise<ShortUrl | null | string> {
     const newUrl = {
         alias,
         url,
@@ -17,19 +17,22 @@ export default async function createUrl(
    // check for duplicate alias
     const duplicate = await collection.findOne({ alias });
     if (duplicate) {
-        throw new Error("Alias already taken");
+        // throw new Error ("Alias already taken")
+        return "Alias already taken";
     }
     // check for validation of url
     try {
         new URL(url);
     } catch {
-        throw new Error("Invalid URL");
+        //throw new Error ("Invalid URL")
+        return "Invalid URL";
     }
     // similar to lab syntax
     const res = await collection.insertOne(newUrl);
 
     if(!res.acknowledged){
-        return null;
+         return null;
+        //return "acknowledged";
     }
         console.log("URL RECEIVED:", newUrl.url);
         console.log ("alias:", newUrl.alias);
