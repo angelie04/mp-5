@@ -14,19 +14,20 @@ export default async function createUrl(
     };
     const collection = await getCollection(COLLECTION_NAME);
 
-   // check for duplicate alias
-    const duplicate = await collection.findOne({ alias });
-    if (duplicate) {
-        // throw new Error ("Alias already taken")
-        return "Alias already taken";
-    }
-    // check for validation of url
+    // check for validation of url (had to swap these error handles to check for invalid url first)
     try {
         new URL(url);
     } catch {
         //throw new Error ("Invalid URL")
         return "Invalid URL";
     }
+   // check for duplicate alias
+    const duplicate = await collection.findOne({ alias });
+    if (duplicate) {
+        // throw new Error ("Alias already taken")
+        return "Alias already taken";
+    }
+
     // similar to lab syntax
     const res = await collection.insertOne(newUrl);
 
