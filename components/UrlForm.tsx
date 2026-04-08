@@ -25,7 +25,8 @@ export default function NewShortUrlForm({
                 createUrl(alias, url)
                     .then((p) => {
                         if (!p) return;
-                        // new...
+                        // found solution for error string to show on vercel, ai assistance here
+                        // (didn't know how to check for type of p
                         if (typeof p === "string") {
                             setError(p);
                             return;
@@ -39,9 +40,6 @@ export default function NewShortUrlForm({
                         setAlias("");
                         setUrl("");
                     })
-                    // .catch((err) => {
-                    //     setError(err.message);
-                    // });
             }}
         >
             {/* Title */}
