@@ -25,9 +25,10 @@ export default async function createUrl(
         // throw new Error ("Alias already taken")
         return "Alias already taken";
     }
-
-    if (newUrl.url = "https://mp-5-pi-five.vercel.app/" ) {
-        return "Used this sites url, try something else!"
+    // broke url string into parts, origin is the base of the website, ie. https://mp-5-pi-five.vercel.app
+    const p = new URL(url);
+    if (p.origin === "https://mp-5-pi-five.vercel.app" || p.origin === "https://mp-5-pi-five.vercel.app/" ) {
+        return "Something went wrong, try again!"
     }
 
     // similar to lab syntax
